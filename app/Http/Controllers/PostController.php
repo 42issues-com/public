@@ -2,23 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreNewsRequest;
-use App\Http\Requests\UpdateNewsRequest;
-use App\Models\News;
+use App\Http\Requests\StorePostRequest;
+use App\Http\Requests\UpdatePostRequest;
+use App\Models\Post;
 use Inertia\Inertia;
 
-class NewsController extends Controller
+class PostController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-
-        return Inertia::render('News', [
-            'news' => News::all(),
+        return Inertia::render('Post/Index', [
+            'posts' => Post::all(),
         ]);
-
     }
 
     /**
@@ -32,7 +30,7 @@ class NewsController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreNewsRequest $request)
+    public function store(StorePostRequest $request)
     {
         //
     }
@@ -40,15 +38,17 @@ class NewsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(News $news)
+    public function show(Post $post)
     {
-        //
+        return Inertia::render('Post/Show', [
+            'post' => $post,
+        ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(News $news)
+    public function edit(Post $post)
     {
         //
     }
@@ -56,7 +56,7 @@ class NewsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateNewsRequest $request, News $news)
+    public function update(UpdatePostRequest $request, Post $post)
     {
         //
     }
@@ -64,7 +64,7 @@ class NewsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(News $news)
+    public function destroy(Post $post)
     {
         //
     }

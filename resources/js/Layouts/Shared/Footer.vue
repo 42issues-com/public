@@ -41,7 +41,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-span-2 mt-10 lg:mt-0">
+                <div class="col-span-2 mt-10 lg:mt-0 lg:place-self-end">
                     <h3 class="text-sm/6 font-semibold text-white">
                         Subscribe to our newsletter
                     </h3>
@@ -168,7 +168,7 @@ const navigation = {
         },
         {
             name: 'YouTube',
-            href: '#',
+            href: 'https://www.youtube.com/@42issues',
             icon: defineComponent({
                 render: () =>
                     h('svg', { fill: 'currentColor', viewBox: '0 0 24 24' }, [

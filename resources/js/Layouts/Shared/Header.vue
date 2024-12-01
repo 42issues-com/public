@@ -6,8 +6,8 @@
         >
             <div class="flex lg:flex-1">
                 <Link :href="route('welcome')" class="-m-1.5 p-1.5">
-                    <span class="sr-only">Your Company</span>
-                    <ApplicationLogo class="h-8" />
+                    <span class="sr-only">42issues</span>
+                    <ApplicationLogoBrand class="h-8 text-primary-500" />
                 </Link>
             </div>
             <div class="flex lg:hidden">
@@ -21,16 +21,18 @@
                 </button>
             </div>
             <div class="hidden lg:flex lg:gap-x-12">
-                <a
+                <Link
                     v-for="item in navigation"
                     :key="item.name"
                     :href="item.href"
                     class="text-sm/6 font-semibold text-white"
-                    >{{ item.name }}</a
+                    >{{ item.name }}</Link
                 >
             </div>
             <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-                <a href="#" class="text-sm/6 font-semibold text-white"
+                <a
+                    href="https://docs.42issues.com"
+                    class="text-sm/6 font-semibold text-white"
                     >Docs <span aria-hidden="true">&rarr;</span></a
                 >
             </div>
@@ -42,12 +44,12 @@
         >
             <div class="fixed inset-0 z-10" />
             <DialogPanel
-                class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-gray-900 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-white/10"
+                class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-surface-950 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-white/10"
             >
                 <div class="flex items-center justify-between">
                     <Link :href="route('welcome')" class="-m-1.5 p-1.5">
-                        <span class="sr-only">Your Company</span>
-                        <ApplicationLogo class="h-11" />
+                        <span class="sr-only">42issues</span>
+                        <ApplicationLogoBrand class="h-8 text-primary-500" />
                     </Link>
                     <button
                         type="button"
@@ -61,17 +63,17 @@
                 <div class="mt-6 flow-root">
                     <div class="-my-6 divide-y divide-gray-500/25">
                         <div class="space-y-2 py-6">
-                            <a
+                            <Link
                                 v-for="item in navigation"
                                 :key="item.name"
                                 :href="item.href"
                                 class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white hover:bg-gray-800"
-                                >{{ item.name }}</a
+                                >{{ item.name }}</Link
                             >
                         </div>
                         <div class="py-6">
                             <a
-                                href="#"
+                                href="https://docs.42issues.com"
                                 class="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-white hover:bg-gray-800"
                                 >Docs</a
                             >
@@ -88,8 +90,8 @@
 import { ref } from 'vue';
 import { Dialog, DialogPanel } from '@headlessui/vue';
 import { Bars3Icon, XMarkIcon } from '@heroicons/vue/24/outline';
-import ApplicationLogo from '@/Components/ApplicationLogo.vue';
 import { Link } from '@inertiajs/vue3';
+import ApplicationLogoBrand from '@/Components/ApplicationLogoBrand.vue';
 
 const { overlay } = defineProps({
     overlay: {
@@ -100,7 +102,7 @@ const { overlay } = defineProps({
 
 const navigation = [
     // { name: 'Products', href: '#' },
-    { name: 'News', href: route('news.index') },
+    { name: 'Blog', href: route('blog.index') },
     { name: 'Company', href: '#' },
     { name: 'Contact', href: '#' },
 ];

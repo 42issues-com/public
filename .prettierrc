@@ -1,11 +1,5 @@
 {
     "singleQuote": true,
-    "prettier/prettier": [
-        "error",
-        {
-            "endOfLine": "auto"
-        }
-    ],
     "plugins": [
         "prettier-plugin-organize-imports",
         "prettier-plugin-tailwindcss"

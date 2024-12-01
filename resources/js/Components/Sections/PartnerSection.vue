@@ -44,6 +44,12 @@
                                 </dd>
                             </div>
                         </dl>
+                        <button
+                            class="mt-10 flex place-self-end rounded-md bg-primary-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500"
+                        >
+                            <span>Comming soon!</span>
+                            <ArrowRightIcon class="ml-1 size-5" />
+                        </button>
                     </div>
                 </div>
                 <div class="flex items-start justify-end lg:order-first">
@@ -61,6 +67,7 @@
 </template>
 
 <script setup>
+import { ArrowRightIcon } from '@heroicons/vue/20/solid';
 import { StarIcon, BuildingOfficeIcon } from '@heroicons/vue/24/outline';
 
 const investors = [

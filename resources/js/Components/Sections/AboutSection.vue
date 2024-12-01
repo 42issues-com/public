@@ -6,8 +6,14 @@
             >
                 <div class="lg:pr-8 lg:pt-4">
                     <div class="lg:max-w-lg">
-                        <h2 class="text-base/7 font-semibold text-primary-400">
-                            42 and You
+                        <h2
+                            class="flex items-center text-base/7 font-semibold text-primary-400"
+                        >
+                            <ApplicationLogo
+                                class="mr-1 size-5 text-primary-400"
+                                aria-hidden="true"
+                            />
+                            <span class="sr-only">42 </span><span>and You</span>
                         </h2>
                         <p
                             class="mt-2 text-pretty text-4xl font-semibold tracking-tight text-white sm:text-5xl"
@@ -67,6 +73,7 @@ import {
     ClipboardDocumentCheckIcon,
     UserGroupIcon,
 } from '@heroicons/vue/24/outline';
+import ApplicationLogo from '../ApplicationLogo.vue';
 
 const features = [
     {

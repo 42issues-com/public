@@ -33,6 +33,9 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    // Append initials to JSON output
+    protected $appends = ['initials'];
+
     /**
      * Get the attributes that should be cast.
      *
@@ -44,5 +47,20 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function getInitialsAttribute(): string
+    {
+        // Assuming `username` is the field containing the user's name
+        $username = $this->name;
+
+        if (strlen($username) < 2) {
+            return strtoupper($username); // Return the single letter if username is too short
+        }
+
+        $firstLetter = $username[0];
+        $lastLetter = $username[strlen($username) - 1];
+
+        return strtoupper("{$firstLetter}{$lastLetter}");
     }
 }
