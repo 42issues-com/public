@@ -66,7 +66,7 @@
                 <ApplicationLogo class="h-11 text-primary-500" />
                 <div class="mt-24 sm:mt-32 lg:mt-16">
                     <Link
-                        :href="route('blog.index')"
+                        :href="route('blog.show', latest)"
                         class="inline-flex space-x-6"
                     >
                         <span
@@ -76,7 +76,7 @@
                         <span
                             class="inline-flex items-center space-x-2 text-sm/6 font-medium text-gray-300"
                         >
-                            <span>Just shipped v1.0</span>
+                            <span>{{ latest.title }}</span>
                             <ChevronRightIcon
                                 class="size-5 text-gray-500"
                                 aria-hidden="true"
@@ -168,6 +168,10 @@ import ApplicationLogo from '../ApplicationLogo.vue';
 
 const form = useForm({
     email: null,
+});
+
+const { latest } = defineProps({
+    latest: Object,
 });
 
 const emit = defineEmits(['showNotification']);

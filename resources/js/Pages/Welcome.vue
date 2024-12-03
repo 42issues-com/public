@@ -11,6 +11,10 @@ import HeroSection from '@/Components/Sections/HeroSection.vue';
 import GuestLayout from '@/Layouts/GuestLayout.vue';
 import SubscriptionNotification from '@/Components/SubscriptionNotification.vue';
 
+const { latestPost } = defineProps({
+    latestPost: Object,
+});
+
 const show = ref(false);
 </script>
 
@@ -19,6 +23,7 @@ const show = ref(false);
 
     <GuestLayout :header-overlay="true">
         <HeroSection
+            :latest="latestPost"
             @close-notification="show = false"
             @show-notification="show = true"
         />
