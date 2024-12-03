@@ -96,7 +96,17 @@
                     progress, and stay focused on what matters.
                 </p>
                 <div class="mt-10 flex items-center gap-x-6">
-                    <form>
+                    <form
+                        @submit.prevent="
+                            form.post(route('subscription.store'), {
+                                preserveScroll: true,
+                                onSuccess: () => {
+                                    emit('showNotification');
+                                    form.reset('email');
+                                },
+                            })
+                        "
+                    >
                         <div class="flex gap-x-4">
                             <label for="email-address" class="sr-only"
                                 >Email address</label
@@ -107,16 +117,24 @@
                                 type="email"
                                 autocomplete="email"
                                 required=""
+                                v-model="form.email"
                                 class="flex-auto rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:min-w-72 sm:text-sm/6"
                                 placeholder="Enter your email"
                             />
                             <button
                                 type="submit"
+                                :disabled="form.processing"
                                 class="flex-none rounded-md bg-primary-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600"
                             >
                                 Subscribe
                             </button>
                         </div>
+                        <p
+                            class="mt-4 text-sm text-red-500"
+                            v-if="form.errors.email"
+                        >
+                            {{ form.errors.email }}
+                        </p>
                         <p
                             class="mt-4 text-sm text-gray-900 dark:text-gray-200"
                         >
@@ -144,8 +162,13 @@
 </template>
 
 <script setup>
+import { Link, useForm } from '@inertiajs/vue3';
 import { ChevronRightIcon } from '@heroicons/vue/20/solid';
-import { CodeBracketSquareIcon } from '@heroicons/vue/24/outline';
 import ApplicationLogo from '../ApplicationLogo.vue';
-import { Link } from '@inertiajs/vue3';
+
+const form = useForm({
+    email: null,
+});
+
+const emit = defineEmits(['showNotification']);
 </script>

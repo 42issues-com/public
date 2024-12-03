@@ -1,5 +1,4 @@
 <script setup>
-import { Link } from '@inertiajs/vue3';
 import Footer from './Shared/Footer.vue';
 import Header from './Shared/Header.vue';
 

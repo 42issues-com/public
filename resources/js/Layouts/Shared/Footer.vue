@@ -41,15 +41,19 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-span-2 mt-10 lg:mt-0 lg:place-self-end">
-                    <h3 class="text-sm/6 font-semibold text-white">
-                        Subscribe to our newsletter
-                    </h3>
-                    <p class="mt-2 text-sm/6 text-gray-300">
-                        The latest news, articles, and resources, sent to your
-                        inbox weekly.
-                    </p>
-                    <form class="mt-6 sm:flex sm:max-w-md">
+                <div
+                    class="col-start-4 mt-10 lg:mt-0 lg:place-self-end lg:text-right"
+                >
+                    <ApplicationLogoBrand class="mt-2 h-8 text-primary-500" />
+                    <!-- <h3 class="text-sm/6 font-semibold text-white">42issues</h3> -->
+                    <p class="mt-6 text-sm/6 text-gray-300">Karlstad, Sweden</p>
+                    <a
+                        class="mt-2 block text-sm/6 text-gray-300 hover:text-primary-500"
+                        href="mailto:info@42issues.com"
+                        >info@42issues.com</a
+                    >
+
+                    <!-- <form class="mt-6 sm:flex sm:max-w-md">
                         <label for="email-address" class="sr-only"
                             >Email address</label
                         >
@@ -70,7 +74,7 @@
                                 Subscribe
                             </button>
                         </div>
-                    </form>
+                    </form> -->
                 </div>
             </div>
             <div
@@ -100,6 +104,7 @@
 </template>
 
 <script setup>
+import ApplicationLogoBrand from '@/Components/ApplicationLogoBrand.vue';
 import { defineComponent, h } from 'vue';
 
 const navigation = {

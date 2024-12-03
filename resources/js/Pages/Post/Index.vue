@@ -9,7 +9,7 @@
                     >
                         From the blog
                     </h1>
-                    <p class="mt-2 text-lg/8 text-gray-600">
+                    <p class="mt-6 text-lg/8 text-gray-600">
                         Learn how to grow your business with our expert advice.
                     </p>
                 </div>
@@ -64,21 +64,32 @@
             </div>
         </main>
 
-        <NewsletterSection />
+        <NewsletterSection
+            @close-notification="show = false"
+            @show-notification="show = true"
+        />
 
         <FaqSection />
+
+        <SubscriptionNotification
+            :show="show"
+            @close-notification="show = false"
+        />
     </GuestLayout>
 </template>
 
 <script setup>
+import { ref } from 'vue';
 import Initials from '@/Components/Initials.vue';
 import FaqSection from '@/Components/Sections/FaqSection.vue';
 import NewsletterSection from '@/Components/Sections/NewsletterSection.vue';
 import GuestLayout from '@/Layouts/GuestLayout.vue';
-import { ArrowRightIcon } from '@heroicons/vue/24/outline';
 import { Head, Link } from '@inertiajs/vue3';
+import SubscriptionNotification from '@/Components/SubscriptionNotification.vue';
 
 const { posts } = defineProps({
     posts: Object,
 });
+
+const show = ref(false);
 </script>

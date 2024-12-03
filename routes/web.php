@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SubscriptionController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -22,6 +24,9 @@ Route::resource('blog', PostController::class)
     ->only([
         'index', 'show',
     ]);
+
+Route::resource('contact', ContactController::class)->only(['index', 'store']);
+Route::resource('subscription', SubscriptionController::class)->only(['store']);
 
 /*
 Route::get('/dashboard', function () {

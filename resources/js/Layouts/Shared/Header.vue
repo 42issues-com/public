@@ -25,7 +25,10 @@
                     v-for="item in navigation"
                     :key="item.name"
                     :href="item.href"
-                    class="text-sm/6 font-semibold text-white"
+                    :class="[
+                        item.current ? 'text-primary-500' : 'text-white',
+                        'text-sm/6 font-semibold hover:text-primary-400',
+                    ]"
                     >{{ item.name }}</Link
                 >
             </div>
@@ -61,13 +64,18 @@
                     </button>
                 </div>
                 <div class="mt-6 flow-root">
-                    <div class="-my-6 divide-y divide-gray-500/25">
+                    <div class="-my-6 divide-y divide-surface-500/25">
                         <div class="space-y-2 py-6">
                             <Link
                                 v-for="item in navigation"
                                 :key="item.name"
                                 :href="item.href"
-                                class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white hover:bg-gray-800"
+                                :class="[
+                                    item.current
+                                        ? 'bg-surface-900 text-primary-500'
+                                        : 'text-white',
+                                    '-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold hover:bg-surface-800',
+                                ]"
                                 >{{ item.name }}</Link
                             >
                         </div>
@@ -92,6 +100,7 @@ import { Dialog, DialogPanel } from '@headlessui/vue';
 import { Bars3Icon, XMarkIcon } from '@heroicons/vue/24/outline';
 import { Link } from '@inertiajs/vue3';
 import ApplicationLogoBrand from '@/Components/ApplicationLogoBrand.vue';
+import { current } from 'tailwindcss/colors';
 
 const { overlay } = defineProps({
     overlay: {
@@ -102,9 +111,17 @@ const { overlay } = defineProps({
 
 const navigation = [
     // { name: 'Products', href: '#' },
-    { name: 'Blog', href: route('blog.index') },
-    { name: 'Company', href: '#' },
-    { name: 'Contact', href: '#' },
+    {
+        name: 'Blog',
+        href: route('blog.index'),
+        current: route().current('blog.*'),
+    },
+    // { name: 'Company', href: '#' },
+    {
+        name: 'Contact',
+        href: route('contact.index'),
+        current: route().current('contact.*'),
+    },
 ];
 
 const mobileMenuOpen = ref(false);

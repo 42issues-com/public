@@ -25,19 +25,31 @@
             </div>
         </main>
 
-        <NewsletterSection />
+        <NewsletterSection
+            @close-notification="show = false"
+            @show-notification="show = true"
+        />
 
         <FaqSection />
+
+        <SubscriptionNotification
+            :show="show"
+            @close-notification="show = false"
+        />
     </GuestLayout>
 </template>
 
 <script setup>
+import { ref } from 'vue';
+import { Head } from '@inertiajs/vue3';
 import FaqSection from '@/Components/Sections/FaqSection.vue';
 import NewsletterSection from '@/Components/Sections/NewsletterSection.vue';
 import GuestLayout from '@/Layouts/GuestLayout.vue';
-import { Head, Link } from '@inertiajs/vue3';
+import SubscriptionNotification from '@/Components/SubscriptionNotification.vue';
 
 const { post } = defineProps({
     post: Object,
 });
+
+const show = ref(false);
 </script>
